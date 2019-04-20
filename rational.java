@@ -8,6 +8,11 @@ class rational{
         this.denominator = d1;
     }
 
+    public static rational add(rational r1, rational r2){
+        rational toReturn = new rational((r1.numerator*r2.denominator)+(r2.numerator*r1.denominator), r1.denominator*r2.denominator);
+        return toReturn;
+    }
+
     public static void main(String[] args){
         int argc = args.length;
         if(argc == 4){
@@ -17,24 +22,19 @@ class rational{
             int d2 = 0;
 
             try{
-                int numerator1;
-                int numerator2;
-                int denominator;
 
                 n1 = Integer.parseInt(args[0]);
                 d1 = Integer.parseInt(args[1]);
                 n2 = Integer.parseInt(args[2]);
                 d2 = Integer.parseInt(args[3]);
 
-                numerator1 = n1*d2;
-                numerator2 = d1*n2;
-                denominator = d1*d2;
+                rational r1 = new rational(n1, d1);
+                rational r2 = new rational(n2, d2);
+                rational r3 = new rational(0, 0);
 
-                StringBuilder s = new StringBuilder();
-                s.append(numerator1 + numerator2);
-                s.append("/");
-                s.append(denominator);
-                System.out.println(s);
+                r3 = rational.add(r1, r2);
+
+                System.out.println(r3.numerator + "/" + r3.denominator);
 
             }
             catch(NumberFormatException e){
