@@ -1,4 +1,12 @@
-class main{
+class rational{
+
+    private int numerator;
+    private int denominator;
+
+    public rational(int n1, int d1){
+        this.numerator = n1;
+        this.denominator = d1;
+    }
 
     public static void main(String[] args){
         int argc = args.length;
