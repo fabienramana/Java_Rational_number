@@ -24,7 +24,7 @@ class rational{
 
     public static void main (String[] args){
         int argc = args.length;
-        if(argc == 4){
+        if(argc == 2){
             int n1 = 0;
             int d1 = 0;
             int n2 = 0;
@@ -32,10 +32,13 @@ class rational{
 
             try{
 
-                n1 = Integer.parseInt(args[0]);
-                d1 = Integer.parseInt(args[1]);
-                n2 = Integer.parseInt(args[2]);
-                d2 = Integer.parseInt(args[3]);
+                String[] firstRational = args[0].split("/");
+                String[] secondRational = args[1].split("/");
+
+                n1 = Integer.parseInt(firstRational[0]);
+                d1 = Integer.parseInt(firstRational[1]);
+                n2 = Integer.parseInt(secondRational[0]);
+                d2 = Integer.parseInt(secondRational[1]);
 
                 rational r1 = new rational(n1, d1);
                 rational r2 = new rational(n2, d2);
