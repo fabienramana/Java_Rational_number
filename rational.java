@@ -13,7 +13,16 @@ class rational{
         return toReturn;
     }
 
-    public static void main(String[] args){
+    /*@Override
+    String toString(rational r3){
+        System.out.println(r3.numerator + "/" + r3.denominator);
+    }*/
+
+    public static void  show (rational r3){
+        System.out.println(r3.numerator + "/" + r3.denominator);
+    }
+
+    public static void main (String[] args){
         int argc = args.length;
         if(argc == 4){
             int n1 = 0;
@@ -33,8 +42,7 @@ class rational{
                 rational r3 = new rational(0, 0);
 
                 r3 = rational.add(r1, r2);
-
-                System.out.println(r3.numerator + "/" + r3.denominator);
+                rational.show(r3);
 
             }
             catch(NumberFormatException e){
