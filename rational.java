@@ -23,36 +23,32 @@ class rational{
     }
 
     public static void main (String[] args){
-        int argc = args.length;
-        if(argc == 2){
-            int n1 = 0;
-            int d1 = 0;
-            int n2 = 0;
-            int d2 = 0;
+        int n1 = 0;
+        int d1 = 0;
+        int n2 = 0;
+        int d2 = 0;
 
-            try{
+        try{
 
-                String[] firstRational = args[0].split("/");
-                String[] secondRational = args[1].split("/");
+            String[] firstRational = args[0].split("/");
+            String operator = args[1];
+            String[] secondRational = args[2].split("/");
 
-                n1 = Integer.parseInt(firstRational[0]);
-                d1 = Integer.parseInt(firstRational[1]);
-                n2 = Integer.parseInt(secondRational[0]);
-                d2 = Integer.parseInt(secondRational[1]);
+            n1 = Integer.parseInt(firstRational[0]);
+            d1 = Integer.parseInt(firstRational[1]);
+            n2 = Integer.parseInt(secondRational[0]);
+            d2 = Integer.parseInt(secondRational[1]);
 
-                rational r1 = new rational(n1, d1);
-                rational r2 = new rational(n2, d2);
-                rational r3 = new rational(0, 0);
+            rational r1 = new rational(n1, d1);
+            rational r2 = new rational(n2, d2);
+            rational r3 = new rational(0, 0);
 
-                r3 = rational.add(r1, r2);
-                rational.show(r3);
+            r3 = rational.add(r1, r2);
+            rational.show(r3);
 
-            }
-            catch(NumberFormatException e){
-                System.out.println("Les arguments entrés ne sont pas valides !");
-            }
-        }else{
-            System.out.println("Le nombre d'arguments est incorrect");
+        }
+        catch(NumberFormatException e){
+            System.out.println("Les arguments entrés ne sont pas valides !");
         }
     }
 }
