@@ -42,7 +42,15 @@ class rational{
     }*/
 
     public String show (){
-        return this.numerator + "/" + this.denominator;
+        if(this.numerator < 0 && this.denominator < 0){
+            return ((-this.numerator) + "/" + (-this.denominator));
+        }
+        else if(this.denominator < 0){
+            return ((-this.numerator) + "/" + this.denominator);
+        }
+        else{
+            return this.numerator + "/" + this.denominator;
+        }
     }
 
     public static void main (String[] args){
@@ -78,6 +86,7 @@ class rational{
 
             pgcd = calculatePGCD(r3.numerator, r3.denominator);
             r3 = divideByPGCD(r3, pgcd);
+            
             if(r3.numerator == 0){
                 System.out.println("0");    
             }
