@@ -110,6 +110,12 @@ class rational{
                 if(r3.numerator == 0){
                     System.out.println("0");    
                 }
+                else if(r3.denominator == 1){
+                    System.out.println(r3.numerator);
+                }
+                else if(r3.denominator == -1){
+                    System.out.println(-r3.numerator);
+                }
                 else{
                     System.out.println(r3.show());
                 }
