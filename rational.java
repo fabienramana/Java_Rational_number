@@ -37,12 +37,12 @@ class rational{
 
 
     /*@Override
-    String toString(rational r3){
+    public String toString(){
         System.out.println(r3.numerator + "/" + r3.denominator);
     }*/
 
-    public static void  show (rational r3){
-        System.out.println(r3.numerator + "/" + r3.denominator);
+    public String show (){
+        return this.numerator + "/" + this.denominator;
     }
 
     public static void main (String[] args){
@@ -56,6 +56,7 @@ class rational{
 
             String[] firstRational = args[0].split("/");
             String operator = args[1];
+            System.out.println(operator);
             String[] secondRational = args[2].split("/");
 
             n1 = Integer.parseInt(firstRational[0]);
@@ -67,16 +68,16 @@ class rational{
             rational r2 = new rational(n2, d2);
             rational r3 = new rational(0, 0);
 
-            if(operator == "-"){
+            if(operator.equals("-")){
                 r3 = rational.difference(r1, r2);
             }
-            else if(operator == "+"){
+            else if(operator.equals("+")){
                 r3 = rational.add(r1, r2);
             }
 
             pgcd = calculatePGCD(r3.numerator, r3.denominator);
             r3 = divideByPGCD(r3, pgcd);
-            rational.show(r3);
+            System.out.println(r3.show());
 
         }
         catch(NumberFormatException e){
