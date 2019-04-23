@@ -56,8 +56,9 @@ class rational{
 
             String[] firstRational = args[0].split("/");
             String operator = args[1];
-            System.out.println(operator);
             String[] secondRational = args[2].split("/");
+
+            // IF OPERATOR TO PUT
 
             n1 = Integer.parseInt(firstRational[0]);
             d1 = Integer.parseInt(firstRational[1]);
@@ -77,7 +78,12 @@ class rational{
 
             pgcd = calculatePGCD(r3.numerator, r3.denominator);
             r3 = divideByPGCD(r3, pgcd);
-            System.out.println(r3.show());
+            if(r3.numerator == 0){
+                System.out.println("0");    
+            }
+            else{
+                System.out.println(r3.show());
+            }
 
         }
         catch(NumberFormatException e){
