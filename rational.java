@@ -18,6 +18,16 @@ class rational{
         return toReturn;
     }
 
+    public static rational multiply(rational r1, rational r2){
+        rational toReturn = new rational(r1.numerator*r2.numerator, r1.denominator*r2.denominator);
+        return toReturn;
+    }
+
+    public static rational divide(rational r1, rational r2){
+        rational toReturn = new rational(r1.numerator*r2.denominator, r1.denominator*r2.numerator);
+        return toReturn;
+    }
+
     public static int calculatePGCD(int a, int b){
         int reste = 0;
         reste = a % b;
@@ -54,49 +64,63 @@ class rational{
     }
 
     public static void main (String[] args){
-        int n1 = 0;
-        int d1 = 0;
-        int n2 = 0;
-        int d2 = 0;
-        int pgcd = 0;
+        if(args.length == 3){
+            int n1 = 0;
+            int d1 = 0;
+            int n2 = 0;
+            int d2 = 0;
+            int pgcd = 0;
 
-        try{
+            try{
+                String[] firstRational = args[0].split("/");
+                String operator = args[1];
+                String[] secondRational = args[2].split("/");
 
-            String[] firstRational = args[0].split("/");
-            String operator = args[1];
-            String[] secondRational = args[2].split("/");
+                // IF OPERATOR TO PUT
 
-            // IF OPERATOR TO PUT
+                n1 = Integer.parseInt(firstRational[0]);
+                d1 = Integer.parseInt(firstRational[1]);
+                n2 = Integer.parseInt(secondRational[0]);
+                d2 = Integer.parseInt(secondRational[1]);
 
-            n1 = Integer.parseInt(firstRational[0]);
-            d1 = Integer.parseInt(firstRational[1]);
-            n2 = Integer.parseInt(secondRational[0]);
-            d2 = Integer.parseInt(secondRational[1]);
+                rational r1 = new rational(n1, d1);
+                rational r2 = new rational(n2, d2);
+                rational r3 = new rational(0, 0);
 
-            rational r1 = new rational(n1, d1);
-            rational r2 = new rational(n2, d2);
-            rational r3 = new rational(0, 0);
+                if(operator.equals("-")){
+                    r3 = rational.difference(r1, r2);
+                }
+                else if(operator.equals("+")){
+                    r3 = rational.add(r1, r2);
+                }
+                else if(operator.equals("*")){
+                    r3 = rational.multiply(r1, r2);
+                }
+                else if(operator.equals("/")){
+                    r3 = rational.divide(r1, r2);
+                }
+                else{
+                    System.out.println("ERREUR : L'operateur n'est pas reconnu");
+                    System.exit(-1);
+                }
 
-            if(operator.equals("-")){
-                r3 = rational.difference(r1, r2);
+                pgcd = calculatePGCD(r3.numerator, r3.denominator);
+                r3 = divideByPGCD(r3, pgcd);
+                
+                if(r3.numerator == 0){
+                    System.out.println("0");    
+                }
+                else{
+                    System.out.println(r3.show());
+                }
+
             }
-            else if(operator.equals("+")){
-                r3 = rational.add(r1, r2);
+            catch(NumberFormatException e){
+                System.out.println("Les arguments entrés ne sont pas valides !");
             }
-
-            pgcd = calculatePGCD(r3.numerator, r3.denominator);
-            r3 = divideByPGCD(r3, pgcd);
-            
-            if(r3.numerator == 0){
-                System.out.println("0");    
-            }
-            else{
-                System.out.println(r3.show());
-            }
-
         }
-        catch(NumberFormatException e){
-            System.out.println("Les arguments entrés ne sont pas valides !");
+        else{
+            System.out.println("Nombre d'arguments invalides !");
         }
     }
 }
